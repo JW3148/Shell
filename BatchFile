@@ -2,8 +2,14 @@
 .cmd  --OS/2, WIN NT
 .btm
 
+
+
+
 shell script --Unix
-batch file   --Windows
+batch file   --Windows  
+
+
+http://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html
 
 
 Unix shell: a command-line interpreter
