@@ -1,0 +1,13 @@
+.bat  -- DOS, WIN 9x
+.cmd  --OS/2, WIN NT
+.btm
+
+shell script --Unix
+batch file   --Windows
+
+
+Unix shell: a command-line interpreter
+
+Typical operations performed by shell scripts include:
+file manipulation, program execution, and printing text. 
+A script which sets up the environment, runs the program, and does any necessary cleanup, logging, &c is called a wrapper
