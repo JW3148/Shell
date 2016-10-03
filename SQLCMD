@@ -1,5 +1,5 @@
 sqlcmd -S [Server_Name] -d  [DB_Name] -i [SQL_Script.sql] -E
-
+sqlcmd.exe -S tcp:[Server_Name] -E -Q "EXEC msdb.dbo.sp_start_job '[JobName]'"
 
 
 https://msdn.microsoft.com/en-us/library/ms162773.aspx
