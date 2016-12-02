@@ -1,0 +1,93 @@
+Command Line FTP
+http://www.coreftp.com/docs/web1/Command_Line_FTP.htm
+ 
+It is recommended that you first go into the site manager and create a site profile.   While it is not required that you use a site profile via command line, it is strongly recommended for security reasons (to protect your user and password).  For more examples without a site profile, check the help file topic 'command  line' from within Core FTP.
+ 
+Once you have verified that your site profile connects and lists the remote directory correctly from within the GUI, you can then be assured that command line transfers will work with your site profile.
+ 
+ 
+FTP Upload via command line:
+ 
+Standard upload of a file with a site profile named 'mysite' into a remote directory /upload/:
+ 
+c:�\program files\coreftp\coreftp.exe� -s -O -site mysite   -u c:\path\file.dat   -p /upload/
+ 
+ 
+Zip and upload a directory from c:\IBM' to a remote directory /public_html/store:
+ 
+"c:\program files\coreftp\coreftp.exe" -s -O -ZIP -AUTONAME -u c:\IBM -site mysite  -p /public_html/store/  -output c:\temp\output.log  -log d:\temp\log.log
+ 
+ 
+The -output  and -log parameter are for information about transfers.  They are optional but listed for informational purposes.
+ 
+ 
+FTP Download via command line:
+ 
+Download all text files from a remote directory /downloads/
+ 
+"c:\program files\coreftp\coreftp.exe" -s -O    -site mysite   -d /downloads/*.txt   -p c:\windows\desktop\   
+ 
+ 
+ 
+Stand alone command line zip/unzip of files (Pro ver):
+ 
+"c:\program files\coreftp\coreftp.exe" -ziponly c:\path\desination.zip c:\sourcefiles\*.dat
+ 
+"c:\program files\coreftp\coreftp.exe" -unziponly c:\path\sourcefile.zip c:\destination_path\
+ 
+ 
+ 
+ 
+The -s is for silent mode.  In the Pro version the splash screen is completely removed.
+ 
+ 
+To specify a different destination filename, use -FN filename.
+ 
+ 
+See the help topic "command line" in the Core FTP help file for a detailed list of options and examples.
+ 
+ 
+ 
+Common Issues:
+ 
+Site profile not found errors - Make sure the user account calling Core FTP is the same one that created the site profile.
+If this is not an option available to you, you can setup Core FTP to have site profiles available to all user accounts.
+
+To have all user accounts access site profiles, there are two options.
+
+1: Export Site profiles (right click list of sites in the Site Manager) to a file, then call coreftp.exe -importglobal <exportfile> 
+This will put the exported site profiles into the global registry (available to most user accounts by default). 
+
+2: Use file based storage (View -> Options -> Data -> Use default configuration file. You will have to either re-enter your site profiles or you can call coreftp.exe -import <exportfile> to import them.
+ 
+ 
+Another option you can use when calling batch files is the "runas" command:
+
+runas /user:youruseraccount c:\test\test.bat 
+
+This will allow the user to access their site profiles stored in the registry instead of ones that are in a file that can be accessed by other users. 
+
+If the runas utility is not an option, look into the psexec utility...
+ 
+ 
+ 
+Overwrite/Resume options:
+ 
+-O -- Overwrite if file exists
+-OA -- Overwrite *all* if transfering a folder or directory of files.
+-ON -- Overwrite files that are newer than existing files.
+-OG -- Overwrite destination file if source file size is greater.
+-OL -- Overwrite destination file if source file size is less (smaller).
+-OS -- Skip file if exists
+-R -- Resume if file exists
+-RA -- Resume *all* files that exist.
+ 
+ 
+In build 1437, a utility called corecmd.exe was added to allow blocking transfers. Use the same commmand line parameters your transfers will block until completed.
+ 
+ 
+ 
+ 
+
+
+FTP Command line examples
